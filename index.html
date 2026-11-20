@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tarjetas virtuales · PROINVERSIÓN</title>
+<meta name="description" content="Demostración de las tarjetas de contacto virtuales de PROINVERSIÓN y su panel de administración.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpolygon points='15,4 29,4 17,28 3,28' fill='%23E1261D'/%3E%3C/svg%3E">
+<style>
+  @font-face { font-family: "Univia Pro"; src: url("prototipo/assets/fonts/UniviaPro-Book.ttf") format("truetype"); font-weight: 300; font-display: swap; }
+  @font-face { font-family: "Univia Pro"; src: url("prototipo/assets/fonts/UniviaPro-Medium.ttf") format("truetype"); font-weight: 500; font-display: swap; }
+  @font-face { font-family: "Univia Pro"; src: url("prototipo/assets/fonts/UniviaPro-Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
+  :root { --rojo: #E1261D; --tinta: #161A1D; --gris: #9FA1A2; color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { margin: 0; background: var(--tinta); color: #fff; font-family: "Univia Pro", "Segoe UI", system-ui, sans-serif; overflow-x: hidden; }
+  main { position: relative; z-index: 1; min-height: 100%; display: flex; flex-direction: column; justify-content: center; gap: 28px; padding: 48px max(24px, 7vw); max-width: 1100px; }
+  .logo { height: 46px; width: auto; align-self: flex-start; }
+  h1 { margin: 0; font-size: clamp(2.2rem, 6vw, 3.6rem); font-weight: 700; line-height: 1.04; letter-spacing: -.02em; max-width: 14ch; }
+  p { margin: 0; max-width: 46ch; font-weight: 300; font-size: 1.08rem; line-height: 1.6; color: rgba(255,255,255,.78); }
+  .opciones { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; max-width: 760px; }
+  a.opcion { display: grid; gap: 6px; padding: 22px 22px 20px; border-radius: 22px; text-decoration: none; color: #fff; background: #23272B; box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); transition: transform .3s cubic-bezier(.2,.8,.2,1), background .3s; }
+  a.opcion:hover, a.opcion:focus-visible { transform: translateY(-3px); background: #2C3135; outline: none; }
+  a.opcion.principal { background: var(--rojo); box-shadow: 0 20px 40px -20px rgba(225,38,29,.8); }
+  a.opcion.principal:hover { background: #C3261F; }
+  .opcion strong { font-size: 1.2rem; font-weight: 700; }
+  .opcion span { font-weight: 300; font-size: .92rem; color: rgba(255,255,255,.82); line-height: 1.45; }
+  .opcion em { font-style: normal; font-size: .8rem; font-weight: 500; margin-top: 6px; }
+  small { color: rgba(255,255,255,.5); font-size: .8rem; }
+  .accent { position: fixed; right: -4vw; bottom: 0; height: 88vh; fill: var(--rojo); opacity: .92; }
+  .accent.linea { right: 14vw; height: 60vh; fill: none; stroke: rgba(255,255,255,.18); stroke-width: .6; }
+  @media (max-width: 720px) { .accent { opacity: .35; } }
+</style>
+</head>
+<body>
+<svg class="accent linea" viewBox="0 0 160 146.7" aria-hidden="true"><polygon points="100,0 160,0 60,146.7 0,146.7"/></svg>
+<svg class="accent" viewBox="0 0 160 146.7" aria-hidden="true"><polygon points="100,0 160,0 60,146.7 0,146.7"/></svg>
+<main>
+  <img class="logo" src="prototipo/assets/img/logo-proinversion-blanco-acento-rojo.svg" alt="PROINVERSIÓN" width="150" height="48">
+  <h1>Tarjetas de contacto virtuales</h1>
+  <p>Una tarjeta por funcionario, lista para escanear con el QR y guardar en el teléfono en un toque, más un panel para crearlas, gestionarlas y medir su uso.</p>
+  <div class="opciones">
+    <a class="opcion principal" href="prototipo/">
+      <strong>Ver la tarjeta</strong>
+      <span>Mirtha Agustina Rázuri Alpiste, Gerenta General. Pensada para celular; ábrela también desde tu teléfono con el QR.</span>
+      <em>Abrir tarjeta →</em>
+    </a>
+    <a class="opcion" href="prototipo/admin/">
+      <strong>Panel de administración</strong>
+      <span>Estadísticas, gestión de tarjetas, editor con vista previa en vivo, datos comunes e historial.</span>
+      <em>Entrar con cualquier usuario y contraseña →</em>
+    </a>
+  </div>
+  <small>Demostración · Las estadísticas del panel son simuladas y los cambios se guardan solo en tu navegador.</small>
+</main>
+</body>
+</html>

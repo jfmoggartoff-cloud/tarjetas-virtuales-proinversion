@@ -22,6 +22,12 @@
     } catch (e) {}
   }
 
+  /* Demostración en GitHub Pages: el enlace, el QR y el contacto apuntan a la dirección donde se está viendo,
+     para que el QR se pueda escanear en una reunión. En el servidor real se usan las URL de investinperu.pe. */
+  if (!previa && /\.github\.io$/i.test(location.hostname)) {
+    D.url_tarjeta = D.url_qr = location.origin + location.pathname.replace(/index\.html$/i, '');
+  }
+
   /* ───── Textos de la interfaz ───── */
   var TXT = {
     es: {
