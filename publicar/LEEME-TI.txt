@@ -1,0 +1,37 @@
+TARJETA VIRTUAL PROINVERSIÓN — PUBLICACIÓN DE PRUEBA (versión estática)
+=======================================================================
+
+Qué es
+  Una página web estática (HTML, CSS, JS, imágenes y fuentes). No necesita PHP
+  ni base de datos. Es la primera tarjeta, publicada para revisión antes de que
+  exista el sistema completo (panel de administración + estadísticas).
+
+Dónde subirla
+  Descomprimir el contenido de mirtha-razuri.zip en la carpeta pública del sitio
+  investinperu.pe, de modo que quede así:
+
+    <raíz del sitio>/tarjeta/mirtha-razuri/index.html
+    <raíz del sitio>/tarjeta/mirtha-razuri/assets/...
+
+  Enlace resultante:  https://www.investinperu.pe/tarjeta/mirtha-razuri/
+
+Puntos a revisar en el servidor
+  1. WordPress no debe capturar esa ruta. Como la carpeta existe físicamente,
+     el .htaccess estándar de WordPress la sirve directamente
+     (RewriteCond %{REQUEST_FILENAME} !-f / !-d).
+  2. Tipos de archivo: .ttf (fuentes) y .svg deben servirse con su tipo correcto
+     (font/ttf, image/svg+xml). Apache lo hace por defecto.
+  3. El filtro de Optical (web36.opticalsc.pe) no debe bloquear la carpeta.
+  4. La página carga una librería pública para dibujar el QR desde
+     cdnjs.cloudflare.com. Si la política del sitio no lo permite, avisar:
+     se puede alojar en el propio servidor.
+
+Contenido
+  index.html           página de la tarjeta (los datos van dentro, en JSON)
+  assets/tarjeta.css   estilos
+  assets/tarjeta.js    comportamiento (QR, guardar contacto, compartir, idioma)
+  assets/fonts/        tipografía institucional Univia Pro
+  assets/img/          logotipos PROINVERSIÓN y MEF
+  assets/fotos/        foto de la funcionaria
+
+La página lleva <meta name="robots" content="noindex">: no aparece en buscadores.
