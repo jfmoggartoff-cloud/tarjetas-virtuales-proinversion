@@ -10,12 +10,9 @@
   /* ───── Modo vista previa (solo prototipo): el panel de administración entrega los datos ─────
      ?previa=<slug> lee la tarjeta guardada por el panel; además escucha cambios en vivo por postMessage. */
   var previa = params.get('previa');
-  // Las fotos del panel vienen relativas a prototipo/ («assets/fotos/…»); desde una subcarpeta hay que anteponer «../»
-  var PREFIJO = (function () { var l = document.querySelector('link[href$="tarjeta.css"]'); return l ? l.getAttribute('href').replace(/assets\/tarjeta\.css$/, '') : ''; })();
-  function rutaFoto(f) { return (f && !/^(data:|https?:|\/|\.\.\/)/.test(f)) ? PREFIJO + f : f; }
   function combinar(comunes, t) {
     var url = 'https://www.investinperu.pe/tarjeta/' + t.slug + '/';
-    return Object.assign({}, comunes, t, { url_tarjeta: url, url_qr: url, foto: rutaFoto(t.foto) });
+    return Object.assign({}, comunes, t, { url_tarjeta: url, url_qr: url });
   }
   if (previa) {
     try {
@@ -196,7 +193,6 @@
   if (previa) window.addEventListener('message', function (e) {
     if (e.origin !== location.origin || !e.data || e.data.tipo !== 'tarjeta-previa') return;
     D = e.data.datos;
-    D.foto = rutaFoto(D.foto);
     pintar();
     $$('.nombre .linea > span').forEach(function (s) { s.style.transform = 'none'; });
     ponerFoto(D.foto);

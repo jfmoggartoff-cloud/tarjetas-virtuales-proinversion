@@ -3,8 +3,8 @@
 #   powershell -ExecutionPolicy Bypass -File herramientas\generar-desde-excel.ps1
 # Produce:
 #   prototipo\<direccion>\index.html     una tarjeta pública por funcionario (igual que investinperu.pe/tarjeta/<direccion>/)
-#   prototipo\assets\datos-tarjetas.js   datos que usan el directorio del equipo (prototipo\index.html) y el panel
-# La página de cada tarjeta se arma con herramientas\plantilla-tarjeta.html (diseño y textos comunes).
+#   prototipo\index.html                  se actualiza con los datos de la Gerenta General (enlace usado en la demostración)
+#   prototipo\assets\datos-tarjetas.js   datos que usa el panel de administración
 #   prototipo\assets\fotos\<usuario>.jpg fotos optimizadas para web (máx. 1000 px)
 param([string]$Proyecto = (Join-Path $PSScriptRoot '..'))
 $ErrorActionPreference = 'Stop'
@@ -13,11 +13,12 @@ $excel = Join-Path $Proyecto 'plantilla-tarjetas.xlsx'
 $proto = Join-Path $Proyecto 'prototipo'
 $fotosOrigen = Join-Path $Proyecto 'fotos'
 $fotosWeb = Join-Path $proto 'assets\fotos'
-$plantillaHtml = Join-Path $PSScriptRoot 'plantilla-tarjeta.html'
+$plantillaHtml = Join-Path $proto 'index.html'
 
 # Direcciones (slug) y encuadres definidos a mano; el resto se calcula
 $DIRECCION = @{ 'mrazuri'='mirtha-razuri'; 'ldelcarpioc'='luis-del-carpio'; 'mcaballero'='maria-caballero'; 'jdelatorre'='juan-carlos-de-la-torre'; 'mfernandezc'='maria-fernandez' }
 $ENCUADRE = @{ 'mrazuri'='33% 22%' }
+$PRINCIPAL = 'mrazuri'   # su tarjeta también se publica en prototipo\index.html
 
 function Get-Slug([string]$t) {
   $n = $t.Normalize([Text.NormalizationForm]::FormD) -replace '\p{Mn}', ''
@@ -116,5 +117,7 @@ foreach ($t in $tarjetas) {
   $dir = Join-Path $proto $t.slug; New-Item -ItemType Directory -Force $dir | Out-Null
   [IO.File]::WriteAllText((Join-Path $dir 'index.html'), (New-Pagina $t '../'), $utf8)
 }
+$prin = $tarjetas | Where-Object { $_.correo -like "$PRINCIPAL@*" } | Select-Object -First 1
+if ($prin) { [IO.File]::WriteAllText($plantillaHtml, (New-Pagina $prin ''), $utf8) }
 "Tarjetas generadas: $($tarjetas.Count)"
 $tarjetas | ForEach-Object { "  prototipo/{0}/  ·  {1} {2}{3}" -f $_.slug, $_.nombres, $_.apellidos, $(if (-not $_.foto) { '  (sin foto)' } else { '' }) }

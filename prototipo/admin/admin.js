@@ -280,11 +280,6 @@
       '<path d="M' + (cx + a * .55) + ' ' + (m + h0 + a * .2) + 'h' + (a * .28) + 'l' + (-a * .41) + ' ' + (a * .6) + 'h' + (-a * .28) + 'z" fill="#E1261D"/></svg>';
   }
   function urlTarjeta(t) { return URL_BASE + t.slug + '/'; }
-  // Vista previa: abre la página de la propia tarjeta (o, si aún no tiene página generada, la de Mirtha como base)
-  function urlPrevia(slug) {
-    const host = (window.TARJETAS_DATOS || []).some(x => x.slug === slug) ? slug : 'mirtha-razuri';
-    return RAIZ + host + '/?previa=' + encodeURIComponent(slug);
-  }
   function abrirQR(t) {
     const svg = qrSVG(urlTarjeta(t));
     if (!svg) { aviso('El generador de QR aún está cargando; inténtalo en un momento'); return; }
@@ -341,7 +336,7 @@
     const cab = t
       ? '<a class="miga" href="#/tarjetas">' + ico('flecha') + 'Tarjetas</a><div class="cabecera"><div style="display:flex;gap:14px;align-items:center">' + avatarHTML(t, 'avatar" style="width:56px;height:56px;border-radius:16px') +
         '<div><h1>' + esc(nombreDe(t)) + '</h1><p>' + esc(v(t.cargo)) + ' · ' + etiquetaEstado(t) + '</p></div></div><div class="cabecera-acciones">' +
-        '<a class="btn btn-sec" href="' + urlPrevia(t.slug) + '" target="_blank" rel="noopener">' + ico('ojo') + 'Ver tarjeta</a>' +
+        '<a class="btn btn-sec" href="' + RAIZ + 'index.html?previa=' + encodeURIComponent(t.slug) + '" target="_blank" rel="noopener">' + ico('ojo') + 'Ver tarjeta</a>' +
         '<a class="btn btn-sec" href="#/editar/' + encodeURIComponent(t.slug) + '">' + ico('lapiz') + 'Editar</a>' +
         '<button class="btn btn-primario" id="btnQRCab" type="button">' + ico('qr') + 'Código QR</button></div></div>'
       : '<div class="cabecera"><div><h1>Panel</h1><p>Cómo se usan las tarjetas virtuales de PROINVERSIÓN.</p></div><div class="cabecera-acciones"><span class="chip-proto">Prototipo · estadísticas simuladas</span><a class="btn btn-primario" href="#/nueva">' + ico('mas2') + 'Nueva tarjeta</a></div></div>';
@@ -421,7 +416,7 @@
           '<div class="ficha-cuerpo"><h3>' + esc(nombreDe(t)) + '</h3><p>' + esc(v(t.cargo)) + '</p>' +
           '<div class="ficha-metricas"><div><strong>' + fmt(a.v) + '</strong><span>vistas · 30 d</span></div><div><strong>' + fmt(a.g) + '</strong><span>guardados</span></div><div><strong>' + fmt(a.qr) + '</strong><span>escaneos QR</span></div></div></div>' +
           '<div class="ficha-acciones">' +
-            '<a class="btn btn-fantasma btn-ico" href="' + urlPrevia(t.slug) + '" target="_blank" rel="noopener" title="Ver tarjeta pública" aria-label="Ver tarjeta pública">' + ico('ojo') + '</a>' +
+            '<a class="btn btn-fantasma btn-ico" href="' + RAIZ + 'index.html?previa=' + encodeURIComponent(t.slug) + '" target="_blank" rel="noopener" title="Ver tarjeta pública" aria-label="Ver tarjeta pública">' + ico('ojo') + '</a>' +
             '<a class="btn btn-fantasma btn-ico" href="#/editar/' + encodeURIComponent(t.slug) + '" title="Editar" aria-label="Editar">' + ico('lapiz') + '</a>' +
             '<a class="btn btn-fantasma btn-ico" href="#/estadisticas/' + encodeURIComponent(t.slug) + '" title="Estadísticas" aria-label="Estadísticas">' + ico('grafico') + '</a>' +
             '<button class="btn btn-fantasma btn-ico" type="button" data-acc="qr" title="Código QR" aria-label="Código QR">' + ico('qr') + '</button>' +
@@ -494,7 +489,7 @@
         '<div class="barra-guardar">' + (!nueva ? (orig.estado === 'desactivada' ? '<button type="button" class="btn btn-sec" id="btnEstado">' + ico('encender') + 'Reactivar</button>' : '<button type="button" class="btn btn-fantasma" id="btnEstado">' + ico('apagar') + 'Desactivar</button>') : '') +
           '<span class="espaciador"></span><span class="estado-guardado" id="estadoGuardado"></span><a class="btn btn-sec" href="#/tarjetas">Cancelar</a><button type="submit" class="btn btn-primario">' + ico('check') + (nueva ? 'Crear tarjeta' : 'Guardar cambios') + '</button></div>' +
       '</form>' +
-      '<aside class="editor-previa"><div class="telefono"><div class="telefono-pantalla"><iframe id="previa" title="Vista previa de la tarjeta" src="' + urlPrevia(orig && !duplicar ? orig.slug : '__borrador') + '"></iframe></div></div>' +
+      '<aside class="editor-previa"><div class="telefono"><div class="telefono-pantalla"><iframe id="previa" title="Vista previa de la tarjeta" src="' + RAIZ + 'index.html?previa=' + encodeURIComponent(orig && !duplicar ? orig.slug : '__borrador') + '"></iframe></div></div>' +
       '<small>Vista previa en vivo · puedes tocar los botones y cambiar el idioma dentro del teléfono</small></aside></div></div>';
 
     const form = $('#formTarjeta'), ifr = $('#previa');
