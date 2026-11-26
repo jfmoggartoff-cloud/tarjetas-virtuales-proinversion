@@ -9,7 +9,8 @@ Con Pages activado (Settings → Pages → *Deploy from a branch* → `main` / *
 | Página | Dirección |
 |---|---|
 | Portada | `https://<usuario>.github.io/tarjetas-virtuales-proinversion/` |
-| Tarjeta | `https://<usuario>.github.io/tarjetas-virtuales-proinversion/prototipo/` |
+| Equipo (todas las tarjetas) | `https://<usuario>.github.io/tarjetas-virtuales-proinversion/prototipo/` |
+| Tarjeta de una persona | `https://<usuario>.github.io/tarjetas-virtuales-proinversion/prototipo/<nombre-apellido>/` (ej. `…/prototipo/mirtha-razuri/`) |
 | Panel | `https://<usuario>.github.io/tarjetas-virtuales-proinversion/prototipo/admin/` (cualquier usuario y contraseña) |
 
 En GitHub Pages el QR de la tarjeta apunta a su propia dirección de Pages, así que se puede escanear en una reunión. En el servidor real apuntará a `investinperu.pe`.
@@ -34,7 +35,7 @@ Aplicación para crear **tarjetas de contacto virtuales** de los funcionarios de
 ```
 index.html                     Portada de la demostración (enlaces a la tarjeta y al panel)
 prototipo/                     Lo que se ve en el navegador
-├── index.html                 Tarjeta de la Gerenta General (enlace usado en la demostración)
+├── index.html                 Directorio «Equipo PROINVERSIÓN»: todas las tarjetas con su QR y buscador
 ├── <nombre-apellido>/         Una tarjeta pública por funcionario (20), igual que investinperu.pe/tarjeta/<…>/
 ├── assets/                    tarjeta.css, tarjeta.js, datos-tarjetas.js, fuentes Univia Pro, logos, fotos optimizadas
 └── admin/                     Panel de administración (index.html, admin.css, admin.js)
@@ -47,6 +48,7 @@ publicar/LEEME-TI.txt          Instrucciones para que TI publique la versión es
 capturas/                      Capturas de la tarjeta y del panel
 herramientas/servidor.ps1      Servidor local de pruebas (PowerShell, sin instalar nada)
 herramientas/generar-desde-excel.ps1   Crea o actualiza las tarjetas a partir del Excel y de fotos/
+herramientas/plantilla-tarjeta.html    Diseño base de cada tarjeta (lo usa el generador)
 ```
 
 ## Actualizar las tarjetas desde el Excel
@@ -65,9 +67,10 @@ powershell -ExecutionPolicy Bypass -File herramientas\servidor.ps1
 ```
 
 Luego abrir:
-- `http://localhost:8766/` → tarjeta de Mirtha Rázuri
+- `http://localhost:8766/` → directorio del equipo (todas las tarjetas)
+- `http://localhost:8766/mirtha-razuri/` → tarjeta de una persona
 - `http://localhost:8766/admin/` → panel (escribir cualquier usuario y contraseña)
-- `http://localhost:8766/?demo=1` → tarjeta con panel de pruebas (probar con otra foto o con datos mínimos)
+- `http://localhost:8766/mirtha-razuri/?demo=1` → tarjeta con panel de pruebas (probar con otra foto o con datos mínimos)
 
 ## Enlaces del sistema final
 
