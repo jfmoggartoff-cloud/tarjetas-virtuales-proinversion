@@ -52,6 +52,31 @@ $ep = New-Object System.Drawing.Imaging.EncoderParameters 1
 $ep.Param[0] = New-Object System.Drawing.Imaging.EncoderParameter ([System.Drawing.Imaging.Encoder]::Quality), 82L
 New-Item -ItemType Directory -Force $fotosWeb | Out-Null
 
+# Miniaturas del directorio con el mismo encuadre para todos: se detecta el rostro (detector de Windows)
+# y se recorta para que ocupe el 28 % de la altura, con su parte superior al 24 % y centrado.
+$fotosMini = Join-Path $fotosWeb 'mini'; New-Item -ItemType Directory -Force $fotosMini | Out-Null
+$MINI_W = 600; $MINI_H = 612; $ROSTRO_ALTO = 0.28; $ROSTRO_ARRIBA = 0.24
+$origenes = Get-ChildItem $fotosOrigen -File | Where-Object { $_.Extension -match '^\.(jpe?g|png)$' } | ForEach-Object FullName
+$ROSTROS = @{}; & (Join-Path $PSScriptRoot 'detectar-rostros.ps1') -Archivos $origenes | ForEach-Object { $ROSTROS[$_.usuario.ToLower()] = $_ }
+function New-Miniatura([string]$origen, [string]$destino, $r) {
+  $im = [System.Drawing.Image]::FromFile($origen)
+  if ($r -and $r.h) {
+    $H = $r.h / $ROSTRO_ALTO; $W = $H * $MINI_W / $MINI_H
+    $top = [math]::Max(0, $r.y - $ROSTRO_ARRIBA * $H)              # nunca se corta la cabeza
+    $left = ($r.x + $r.w / 2) - $W / 2
+    if ($W -le $im.Width) { $left = [math]::Min([math]::Max($left, 0), $im.Width - $W) }
+  } else {                                                          # sin rostro detectado: recorte superior centrado
+    $W = [math]::Min($im.Width, $im.Height * $MINI_W / $MINI_H); $H = $W * $MINI_H / $MINI_W
+    $left = ($im.Width - $W) / 2; $top = 0
+  }
+  $bmp = New-Object System.Drawing.Bitmap $MINI_W, $MINI_H, ([System.Drawing.Imaging.PixelFormat]::Format24bppRgb)
+  $gr = [System.Drawing.Graphics]::FromImage($bmp); $gr.InterpolationMode = 'HighQualityBicubic'; $gr.PixelOffsetMode = 'HighQuality'
+  $at = New-Object System.Drawing.Imaging.ImageAttributes; $at.SetWrapMode([System.Drawing.Drawing2D.WrapMode]::TileFlipXY)  # si falta imagen abajo, se completa en espejo
+  $gr.DrawImage($im, (New-Object System.Drawing.Rectangle 0, 0, $MINI_W, $MINI_H), [single]$left, [single]$top, [single]$W, [single]$H, [System.Drawing.GraphicsUnit]::Pixel, $at)
+  $gr.Dispose(); $im.Dispose(); $bmp.Save($destino, $enc, $ep); $bmp.Dispose()
+  if (-not ($r -and $r.h)) { Write-Warning "No se detectó rostro en $origen; miniatura con recorte centrado" }
+}
+
 # 3) Datos comunes: se toman de la tarjeta plantilla (prototipo\index.html)
 $html = [IO.File]::ReadAllText($plantillaHtml, [Text.Encoding]::UTF8)
 $rx = [regex]'(?s)(<script id="datos-tarjeta" type="application/json">)(.*?)(</script>)'
@@ -73,14 +98,16 @@ foreach ($f in $filas) {
     $gr.DrawImage($im, 0, 0, $w, $h); $gr.Dispose(); $im.Dispose()
     $bmp.Save((Join-Path $fotosWeb "$u.jpg"), $enc, $ep); $bmp.Dispose()
     $foto = "assets/fotos/$u.jpg"
-  } else { Write-Warning "Sin foto para $u (la tarjeta mostrará las iniciales)" }
+    New-Miniatura $origen (Join-Path $fotosMini "$u.jpg") $ROSTROS[$u]
+    $fotoMini = "assets/fotos/mini/$u.jpg"
+  } else { Write-Warning "Sin foto para $u (la tarjeta mostrará las iniciales)"; $fotoMini = '' }
   $tarjetas += [pscustomobject][ordered]@{
     slug = $slug; nombres = $f.nombres; apellidos = $f.apellidos; correo = $f.correo
     cargo = [pscustomobject][ordered]@{ es = $f.cargo_es; en = $f.cargo_en }
     area = [pscustomobject][ordered]@{ es = $f.area_es; en = $f.area_en }
     bio = [pscustomobject][ordered]@{ es = $f.bio_es; en = $f.bio_en }
     celular = $f.celular; whatsapp = [bool]($f.whatsapp -match '^s'); anexo = ($f.anexo -replace '\D', '')
-    foto = $foto; foto_posicion = $(if ($ENCUADRE.ContainsKey($u)) { $ENCUADRE[$u] } else { '50% 24%' })
+    foto = $foto; foto_posicion = $(if ($ENCUADRE.ContainsKey($u)) { $ENCUADRE[$u] } else { '50% 24%' }); foto_mini = $fotoMini
     estado = 'activa'; codigo = (Get-Codigo $u)
   }
 }

@@ -22,6 +22,7 @@ window.TARJETAS_DATOS = [
         "anexo":  "1205",
         "foto":  "assets/fotos/mrazuri.jpg",
         "foto_posicion":  "33% 22%",
+        "foto_mini":  "assets/fotos/mini/mrazuri.jpg",
         "estado":  "activa",
         "codigo":  "P8BXC"
     },
@@ -47,6 +48,7 @@ window.TARJETAS_DATOS = [
         "anexo":  "",
         "foto":  "assets/fotos/yrosas.jpg",
         "foto_posicion":  "50% 24%",
+        "foto_mini":  "assets/fotos/mini/yrosas.jpg",
         "estado":  "activa",
         "codigo":  "6JK49"
     },
@@ -72,6 +74,7 @@ window.TARJETAS_DATOS = [
         "anexo":  "1382",
         "foto":  "assets/fotos/mrasmussen.jpg",
         "foto_posicion":  "50% 24%",
+        "foto_mini":  "assets/fotos/mini/mrasmussen.jpg",
         "estado":  "activa",
         "codigo":  "P2WJ4"
     },
@@ -97,6 +100,7 @@ window.TARJETAS_DATOS = [
         "anexo":  "",
         "foto":  "assets/fotos/dmiralles.jpg",
         "foto_posicion":  "50% 24%",
+        "foto_mini":  "assets/fotos/mini/dmiralles.jpg",
         "estado":  "activa",
         "codigo":  "6D5C5"
     },
@@ -122,6 +126,7 @@ window.TARJETAS_DATOS = [
         "anexo":  "1249",
         "foto":  "assets/fotos/ldelcarpioc.jpg",
         "foto_posicion":  "50% 24%",
+        "foto_mini":  "assets/fotos/mini/ldelcarpioc.jpg",
         "estado":  "activa",
         "codigo":  "R3C8H"
     },
@@ -147,6 +152,7 @@ window.TARJETAS_DATOS = [
         "anexo":  "1256",
         "foto":  "assets/fotos/epatino.jpg",
         "foto_posicion":  "50% 24%",
+        "foto_mini":  "assets/fotos/mini/epatino.jpg",
         "estado":  "activa",
         "codigo":  "VP9WG"
     },
@@ -172,6 +178,7 @@ window.TARJETAS_DATOS = [
         "anexo":  "1217",
         "foto":  "assets/fotos/ecastro.jpg",
         "foto_posicion":  "50% 24%",
+        "foto_mini":  "assets/fotos/mini/ecastro.jpg",
         "estado":  "activa",
         "codigo":  "2YPVL"
     },
@@ -197,6 +204,7 @@ window.TARJETAS_DATOS = [
         "anexo":  "",
         "foto":  "assets/fotos/vlozano.jpg",
         "foto_posicion":  "50% 24%",
+        "foto_mini":  "assets/fotos/mini/vlozano.jpg",
         "estado":  "activa",
         "codigo":  "CTD6X"
     },
@@ -222,6 +230,7 @@ window.TARJETAS_DATOS = [
         "anexo":  "1223",
         "foto":  "assets/fotos/nzegarra.jpg",
         "foto_posicion":  "50% 24%",
+        "foto_mini":  "assets/fotos/mini/nzegarra.jpg",
         "estado":  "activa",
         "codigo":  "ZTNYB"
     },
@@ -247,6 +256,7 @@ window.TARJETAS_DATOS = [
         "anexo":  "1343",
         "foto":  "assets/fotos/ezaldivar.jpg",
         "foto_posicion":  "50% 24%",
+        "foto_mini":  "assets/fotos/mini/ezaldivar.jpg",
         "estado":  "activa",
         "codigo":  "FVG4Y"
     },
@@ -272,6 +282,7 @@ window.TARJETAS_DATOS = [
         "anexo":  "1226",
         "foto":  "assets/fotos/aladeras.jpg",
         "foto_posicion":  "50% 24%",
+        "foto_mini":  "assets/fotos/mini/aladeras.jpg",
         "estado":  "activa",
         "codigo":  "C7RE3"
     },
@@ -297,6 +308,7 @@ window.TARJETAS_DATOS = [
         "anexo":  "",
         "foto":  "assets/fotos/rcayo.jpg",
         "foto_posicion":  "50% 24%",
+        "foto_mini":  "assets/fotos/mini/rcayo.jpg",
         "estado":  "activa",
         "codigo":  "7VJ54"
     },
@@ -322,6 +334,7 @@ window.TARJETAS_DATOS = [
         "anexo":  "",
         "foto":  "assets/fotos/vvillena.jpg",
         "foto_posicion":  "50% 24%",
+        "foto_mini":  "assets/fotos/mini/vvillena.jpg",
         "estado":  "activa",
         "codigo":  "UB9LT"
     },
@@ -347,6 +360,7 @@ window.TARJETAS_DATOS = [
         "anexo":  "",
         "foto":  "assets/fotos/mfernandezc.jpg",
         "foto_posicion":  "50% 24%",
+        "foto_mini":  "assets/fotos/mini/mfernandezc.jpg",
         "estado":  "activa",
         "codigo":  "LW9BV"
     },
@@ -372,6 +386,7 @@ window.TARJETAS_DATOS = [
         "anexo":  "",
         "foto":  "assets/fotos/mcaballero.jpg",
         "foto_posicion":  "50% 24%",
+        "foto_mini":  "assets/fotos/mini/mcaballero.jpg",
         "estado":  "activa",
         "codigo":  "59TCJ"
     },
@@ -397,6 +412,7 @@ window.TARJETAS_DATOS = [
         "anexo":  "",
         "foto":  "assets/fotos/nzedano.jpg",
         "foto_posicion":  "50% 24%",
+        "foto_mini":  "assets/fotos/mini/nzedano.jpg",
         "estado":  "activa",
         "codigo":  "SDZJM"
     },
@@ -422,6 +438,7 @@ window.TARJETAS_DATOS = [
         "anexo":  "",
         "foto":  "assets/fotos/lgonzales.jpg",
         "foto_posicion":  "50% 24%",
+        "foto_mini":  "assets/fotos/mini/lgonzales.jpg",
         "estado":  "activa",
         "codigo":  "WT34F"
     },
@@ -447,6 +464,7 @@ window.TARJETAS_DATOS = [
         "anexo":  "",
         "foto":  "assets/fotos/rrojas.jpg",
         "foto_posicion":  "50% 24%",
+        "foto_mini":  "assets/fotos/mini/rrojas.jpg",
         "estado":  "activa",
         "codigo":  "6LAY2"
     },
@@ -472,6 +490,7 @@ window.TARJETAS_DATOS = [
         "anexo":  "",
         "foto":  "assets/fotos/eguevara.jpg",
         "foto_posicion":  "50% 24%",
+        "foto_mini":  "assets/fotos/mini/eguevara.jpg",
         "estado":  "activa",
         "codigo":  "R3TE8"
     },
@@ -497,6 +516,7 @@ window.TARJETAS_DATOS = [
         "anexo":  "",
         "foto":  "assets/fotos/jdelatorre.jpg",
         "foto_posicion":  "50% 24%",
+        "foto_mini":  "assets/fotos/mini/jdelatorre.jpg",
         "estado":  "activa",
         "codigo":  "DSAGE"
     }

@@ -168,7 +168,9 @@
       var ini = ((t.nombres || ' ')[0] + (t.apellidos || ' ')[0]).toUpperCase();
       return '<article class="ficha" style="animation-delay:' + Math.min(i * 0.04, .6) + 's" data-slug="' + esc(t.slug) + '">' +
         '<a class="ficha-foto" href="' + esc(t.slug) + '/" aria-label="Abrir la tarjeta de ' + esc(nombre) + '">' +
-          (t.foto ? '<img src="' + esc(t.foto) + '" alt="" loading="lazy" style="object-position:' + esc(t.foto_posicion || '50% 24%') + '">' : '<span class="ini">' + esc(ini) + '</span>') +
+          (t.foto_mini ? '<img src="' + esc(t.foto_mini) + '" alt="" loading="lazy">'
+            : t.foto ? '<img src="' + esc(t.foto) + '" alt="" loading="lazy" style="object-position:' + esc(t.foto_posicion || '50% 24%') + '">'
+            : '<span class="ini">' + esc(ini) + '</span>') +
           '<span class="ficha-nombre">' + esc(nombre) + '</span></a>' +
         '<div class="ficha-cuerpo"><p class="ficha-cargo">' + esc(t.cargo && t.cargo.es) + '</p>' +
           '<div class="ficha-pie"><button class="qr-mini" type="button" data-qr aria-label="Ampliar el QR de ' + esc(nombre) + '">' + qrSVG(urlDe(t)) + '</button>' +

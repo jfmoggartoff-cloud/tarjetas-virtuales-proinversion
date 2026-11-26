@@ -49,6 +49,8 @@ capturas/                      Capturas de la tarjeta y del panel
 herramientas/servidor.ps1      Servidor local de pruebas (PowerShell, sin instalar nada)
 herramientas/generar-desde-excel.ps1   Crea o actualiza las tarjetas a partir del Excel y de fotos/
 herramientas/plantilla-tarjeta.html    Diseño base de cada tarjeta (lo usa el generador)
+herramientas/detectar-rostros.ps1      Ubica el rostro en cada foto (detector de Windows) para que las
+                                       miniaturas del directorio tengan el mismo encuadre
 ```
 
 ## Actualizar las tarjetas desde el Excel
