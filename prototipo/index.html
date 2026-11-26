@@ -3,227 +3,210 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Mirtha Agustina R&#225;zuri Alpiste · PROINVERSIÓN</title>
-<meta name="description" content="Tarjeta de contacto de Mirtha Agustina R&#225;zuri Alpiste, Gerenta General de PROINVERSI&#211;N.">
+<title>Equipo PROINVERSIÓN · Tarjetas de contacto</title>
+<meta name="description" content="Conoce al equipo de PROINVERSIÓN y guarda su contacto escaneando el QR de cada tarjeta.">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#1B1E21">
-<!-- En producción el servidor completa estas etiquetas e imagen para la vista previa en WhatsApp/LinkedIn -->
-<meta property="og:type" content="profile">
-<meta property="og:title" content="Mirtha Agustina R&#225;zuri Alpiste &#183; PROINVERSI&#211;N">
-<meta property="og:description" content="Gerenta General">
-<meta property="og:url" content="https://www.investinperu.pe/tarjeta/mirtha-razuri/">
+<meta name="theme-color" content="#161A1D">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpolygon points='15,4 29,4 17,28 3,28' fill='%23E1261D'/%3E%3C/svg%3E">
-<link rel="preload" href="assets/fonts/UniviaPro-Bold.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="preload" href="assets/fonts/UniviaPro-Medium.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="assets/tarjeta.css">
+<style>
+  @font-face { font-family: "Univia Pro"; src: url("assets/fonts/UniviaPro-Book.ttf") format("truetype"); font-weight: 300; font-display: swap; }
+  @font-face { font-family: "Univia Pro"; src: url("assets/fonts/UniviaPro-Regular.ttf") format("truetype"); font-weight: 400; font-display: swap; }
+  @font-face { font-family: "Univia Pro"; src: url("assets/fonts/UniviaPro-Medium.ttf") format("truetype"); font-weight: 500; font-display: swap; }
+  @font-face { font-family: "Univia Pro"; src: url("assets/fonts/UniviaPro-Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
+  :root { --rojo: #E1261D; --rojo-texto: #C3261F; --tinta: #161A1D; --tinta-2: #3B3E41; --tinta-3: #6B6E70; --linea: #E4E4E1; --fondo: #F2F2F0; --blanco: #fff; --ease: cubic-bezier(.2,.8,.2,1); color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fondo); color: var(--tinta); font-family: "Univia Pro", "Segoe UI", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  img, svg { display: block; }
+  button { font: inherit; cursor: pointer; }
+  :focus-visible { outline: 2.5px solid var(--rojo); outline-offset: 3px; border-radius: 10px; }
+  .ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+  /* Encabezado */
+  header { position: relative; overflow: hidden; background: var(--tinta); color: #fff; padding: calc(28px + env(safe-area-inset-top)) 0 38px; }
+  .cab, main, footer { width: min(1180px, calc(100% - 2 * max(16px, 5vw))); margin-left: auto; margin-right: auto; }
+  header .accent { position: absolute; right: -40px; bottom: -2px; height: 112%; fill: var(--rojo); opacity: .92; }
+  header .accent.linea { right: 140px; height: 80%; bottom: 20%; fill: none; stroke: rgba(255,255,255,.18); stroke-width: .6; }
+  .cab { position: relative; z-index: 1; }
+  .cab-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .logo { height: 40px; width: auto; }
+  .volver { font-size: .86rem; color: rgba(255,255,255,.75); display: inline-flex; gap: 6px; align-items: center; }
+  .volver:hover { color: #fff; }
+  h1 { margin: 34px 0 8px; font-size: clamp(2rem, 6vw, 3.2rem); font-weight: 700; letter-spacing: -.02em; line-height: 1.04; }
+  .sub { margin: 0; max-width: 52ch; font-weight: 300; font-size: 1.05rem; line-height: 1.55; color: rgba(255,255,255,.8); }
+  .buscar { position: relative; display: block; margin-top: 24px; max-width: 420px; }
+  .buscar .ico { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--tinta-3); }
+  .buscar input { width: 100%; height: 48px; padding: 0 16px 0 42px; border: 0; border-radius: 14px; font: inherit; font-size: .98rem; background: #fff; color: var(--tinta); }
+  .buscar input:focus { outline: 3px solid rgba(225,38,29,.45); }
+
+  /* Rejilla */
+  main { padding: 22px 0 60px; position: relative; z-index: 2; }
+  .contador { margin: 0 2px 12px; font-size: .84rem; color: var(--tinta-3); }
+  .rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+  .ficha { background: var(--blanco); border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 1px 2px rgba(22,26,29,.05), 0 14px 30px -18px rgba(22,26,29,.3); transition: transform .3s var(--ease), box-shadow .3s; opacity: 0; transform: translateY(16px); animation: entra .6s var(--ease) forwards; }
+  .ficha:hover { transform: translateY(-4px); box-shadow: 0 24px 44px -22px rgba(22,26,29,.45); }
+  @keyframes entra { to { opacity: 1; transform: none; } }
+  .ficha-foto { position: relative; aspect-ratio: 1 / 1.02; background: linear-gradient(160deg, #2C3034, #17191C); overflow: hidden; }
+  .ficha-foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+  .ficha:hover .ficha-foto img { transform: scale(1.04); }
+  .ficha-foto::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(12,14,16,0) 45%, rgba(12,14,16,.82) 100%); }
+  .ficha-foto::after { content: ""; position: absolute; z-index: 1; right: 16px; bottom: 0; width: 70px; height: 102px; background: var(--rojo); clip-path: polygon(68% 0, 100% 0, 32% 100%, 0 100%); mix-blend-mode: multiply; opacity: .92; }
+  .ficha-foto .ini { position: absolute; inset: 0; display: grid; place-items: center; font-size: 4rem; font-weight: 300; color: rgba(255,255,255,.14); }
+  .ficha-nombre { position: absolute; z-index: 2; left: 16px; right: 70px; bottom: 14px; color: #fff; font-weight: 700; font-size: 1.15rem; line-height: 1.12; text-shadow: 0 2px 14px rgba(0,0,0,.45); }
+  .ficha-cuerpo { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .ficha-cargo { margin: 0; font-size: .88rem; line-height: 1.4; color: var(--tinta-2); flex: 1; display: flex; gap: 8px; }
+  .ficha-cargo::before { content: ""; flex: none; width: 9px; height: 12px; margin-top: 3px; background: var(--rojo); clip-path: polygon(68% 0, 100% 0, 32% 100%, 0 100%); }
+  .ficha-pie { display: grid; grid-template-columns: 84px 1fr; gap: 12px; align-items: center; }
+  .qr-mini { width: 84px; height: 84px; padding: 4px; border-radius: 12px; background: #fff; box-shadow: inset 0 0 0 1px var(--linea); cursor: zoom-in; border: 0; }
+  .qr-mini svg { width: 100%; height: 100%; }
+  .botones { display: grid; gap: 8px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 38px; border-radius: 11px; font-size: .86rem; font-weight: 500; border: 0; transition: background .2s, transform .2s var(--ease); }
+  .btn:active { transform: scale(.96); }
+  .btn-rojo { background: var(--rojo); color: #fff; }
+  .btn-rojo:hover { background: var(--rojo-texto); }
+  .btn-gris { background: var(--fondo); color: var(--tinta); }
+  .btn-gris:hover { background: #E7E7E4; }
+  .vacio { grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--tinta-3); }
+  footer { padding: 0 0 40px; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; color: var(--tinta-3); font-size: .8rem; }
+  footer img { height: 28px; width: auto; }
+
+  /* Ventana del QR */
+  .modal { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 20px; }
+  .modal[hidden] { display: none; }
+  .modal-fondo { position: absolute; inset: 0; background: rgba(12,14,16,.6); backdrop-filter: blur(6px); }
+  .modal-caja { position: relative; width: min(380px, 100%); background: #fff; border-radius: 26px; padding: 24px; text-align: center; animation: sube .4s var(--ease); }
+  @keyframes sube { from { opacity: 0; transform: translateY(16px) scale(.97); } }
+  .modal-caja h2 { margin: 0; font-size: 1.2rem; }
+  .modal-caja p { margin: 4px 0 16px; color: var(--tinta-3); font-size: .88rem; }
+  .modal-qr { width: min(260px, 70vw); margin: 0 auto; padding: 12px; border-radius: 20px; box-shadow: inset 0 0 0 1px var(--linea); }
+  .modal-qr svg { width: 100%; height: auto; }
+  .modal-cerrar { position: absolute; top: 12px; right: 12px; width: 38px; height: 38px; border-radius: 50%; border: 0; background: var(--fondo); display: grid; place-items: center; }
+  .modal .btn { margin-top: 16px; width: 100%; height: 44px; }
+
+  /* En el celular se prioriza abrir la tarjeta (el QR se usa desde una pantalla grande) */
+  @media (max-width: 560px) { .ficha-pie { grid-template-columns: 1fr; } .qr-mini { display: none; } .botones { grid-template-columns: 1fr 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .ficha { animation: none; opacity: 1; transform: none; } * { transition-duration: .01ms !important; } }
+</style>
 </head>
-<body class="cargando">
-
-<main class="tarjeta" id="tarjeta">
-  <div class="col-izq">
-    <header class="hero" id="hero">
-      <div class="hero-foto" id="heroFoto">
-        <div class="hero-iniciales" id="iniciales" aria-hidden="true"></div>
-        <img id="foto" alt="" hidden>
-      </div>
-      <div class="hero-velo"></div>
-      <svg class="hero-accent hero-accent--linea" viewBox="0 0 160 146.7" aria-hidden="true"><polygon points="100,0 160,0 60,146.7 0,146.7"/></svg>
-      <svg class="hero-accent" viewBox="0 0 160 146.7" aria-hidden="true"><polygon points="100,0 160,0 60,146.7 0,146.7"/></svg>
-      <div class="hero-top">
-        <img class="logo" src="assets/img/logo-proinversion-blanco-acento-rojo.svg" alt="PROINVERSIÓN" width="150" height="48">
-        <div class="idioma" role="group" aria-label="Idioma / Language">
-          <button type="button" data-lang="es" aria-pressed="true">ES</button>
-          <button type="button" data-lang="en" aria-pressed="false">EN</button>
-        </div>
-      </div>
-      <div class="hero-texto">
-        <h1 class="nombre" id="nombre"></h1>
-        <p class="cargo" id="cargo"></p>
-        <p class="area" id="area"></p>
-      </div>
-    </header>
-
-    <nav class="acciones" id="acciones" aria-label="Acciones rápidas"></nav>
-
-    <div class="barra" id="barra">
-      <button type="button" class="btn-ico" id="btnQR"><span class="sr" data-t="qr"></span></button>
-      <button type="button" class="btn-ico" id="btnCompartir"><span class="sr" data-t="compartir"></span></button>
-      <button type="button" class="btn-principal" id="btnGuardar"><span data-t="guardar"></span></button>
+<body>
+<header>
+  <svg class="accent linea" viewBox="0 0 160 146.7" aria-hidden="true"><polygon points="100,0 160,0 60,146.7 0,146.7"/></svg>
+  <svg class="accent" viewBox="0 0 160 146.7" aria-hidden="true"><polygon points="100,0 160,0 60,146.7 0,146.7"/></svg>
+  <div class="cab">
+    <div class="cab-top">
+      <img class="logo" src="assets/img/logo-proinversion-blanco-acento-rojo.svg" alt="PROINVERSIÓN" width="150" height="48">
+      <a class="volver" href="../"><svg class="ico" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>Inicio</a>
     </div>
+    <h1>Equipo PROINVERSIÓN</h1>
+    <p class="sub">Conoce al equipo y contacta con ellos escaneando sus QR desde tu teléfono, o abre su tarjeta para guardar el contacto en un toque.</p>
+    <label class="buscar"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg><span hidden>Buscar</span><input type="search" id="buscar" placeholder="Buscar por nombre o cargo" autocomplete="off"></label>
   </div>
+</header>
 
-  <div class="col-der">
-    <section class="inactiva-aviso" id="avisoInactiva" role="status" hidden></section>
-
-    <section class="panel-qr revelar" id="panelQR" aria-labelledby="panelQRTitulo">
-      <div class="panel-qr-codigo" id="panelQRCodigo"></div>
-      <div>
-        <h2 id="panelQRTitulo" data-t="escritorioTitulo"></h2>
-        <p data-t="escritorioSub"></p>
-      </div>
-    </section>
-
-    <section class="bloque revelar" id="secPerfil" aria-labelledby="tPerfil">
-      <h2 class="titulo" id="tPerfil"><span data-t="perfil"></span></h2>
-      <p class="bio" id="bio"></p>
-    </section>
-
-    <section class="bloque revelar" id="secContacto" aria-labelledby="tContacto">
-      <h2 class="titulo" id="tContacto"><span data-t="contacto"></span></h2>
-      <ul class="filas" id="filas"></ul>
-    </section>
-
-    <section class="bloque revelar" id="secEnlaces" aria-labelledby="tEnlaces">
-      <h2 class="titulo" id="tEnlaces"><span data-t="enlaces"></span></h2>
-      <div class="enlaces" id="enlaces"></div>
-    </section>
-
-    <section class="bloque revelar" id="secRedes" aria-labelledby="tRedes">
-      <h2 class="titulo" id="tRedes"><span data-t="redes"></span></h2>
-      <div class="redes" id="redes"></div>
-    </section>
-
-    <footer class="pie revelar">
-      <div class="pie-logos">
-        <img src="assets/img/logo-mef.png" alt="Ministerio de Economía y Finanzas" width="800" height="157" class="pie-mef">
-        <span class="pie-sep" aria-hidden="true"></span>
-        <img src="assets/img/logo-proinversion.svg" alt="PROINVERSIÓN" width="150" height="48" class="pie-pro">
-      </div>
-      <p class="pie-entidad" id="entidad"></p>
-    </footer>
-  </div>
+<main>
+  <p class="contador" id="contador" aria-live="polite"></p>
+  <div class="rejilla" id="rejilla"></div>
 </main>
 
-<div class="hoja" id="hojaQR" role="dialog" aria-modal="true" aria-labelledby="hojaTitulo" hidden>
-  <div class="hoja-fondo" data-cerrar></div>
-  <div class="hoja-panel" tabindex="-1">
-    <span class="hoja-asa" aria-hidden="true"></span>
-    <button type="button" class="hoja-cerrar" data-cerrar><span class="sr" data-t="cerrar"></span></button>
-    <h2 id="hojaTitulo" data-t="qrTitulo"></h2>
-    <p class="hoja-sub" data-t="qrSub"></p>
-    <div class="qr-marco"><div id="qrGrande"></div></div>
-    <p class="hoja-nombre" id="hojaNombre"></p>
-    <p class="hoja-cargo" id="hojaCargo"></p>
-    <div class="hoja-botones">
-      <button type="button" class="btn-sec" id="btnDescargarQR"><span data-t="descargarQR"></span></button>
-      <button type="button" class="btn-sec" id="btnCopiar"><span data-t="copiar"></span></button>
-    </div>
+<footer>
+  <img src="assets/img/logo-mef.png" alt="Ministerio de Economía y Finanzas" width="800" height="157">
+  <img src="assets/img/logo-proinversion.svg" alt="PROINVERSIÓN" width="150" height="48">
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalNombre" hidden>
+  <div class="modal-fondo" data-cerrar></div>
+  <div class="modal-caja">
+    <button class="modal-cerrar" type="button" data-cerrar aria-label="Cerrar"><svg class="ico" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg></button>
+    <h2 id="modalNombre"></h2>
+    <p id="modalCargo"></p>
+    <div class="modal-qr" id="modalQR"></div>
+    <a class="btn btn-rojo" id="modalAbrir" href="#">Abrir tarjeta</a>
   </div>
 </div>
 
-<div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+<script src="assets/datos-tarjetas.js"></script>
+<script>
+(function () {
+  'use strict';
+  var $ = function (s) { return document.querySelector(s); };
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+  var norm = function (s) { return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); };
 
-<!-- En producción el servidor (PHP) imprime aquí los datos de la tarjeta desde la base de datos -->
-<script id="datos-tarjeta" type="application/json">
-{
-    "slug":  "mirtha-razuri",
-    "nombres":  "Mirtha Agustina",
-    "apellidos":  "Rázuri Alpiste",
-    "cargo":  {
-                  "es":  "Gerenta General",
-                  "en":  "General Manager"
-              },
-    "area":  {
-                 "es":  "Gerencia General",
-                 "en":  "General Management"
-             },
-    "entidad":  {
-                    "es":  "Agencia de Promoción de la Inversión Privada – PROINVERSIÓN",
-                    "en":  "Private Investment Promotion Agency – PROINVERSIÓN"
-                },
-    "bio":  {
-                "es":  "Gerenta General de PROINVERSIÓN. Abogada por la UNMSM y magíster en Gestión Pública por la Universidad del Pacífico, con más de 20 años de experiencia en regulación, contratación pública y alta dirección en el Estado.",
-                "en":  "General Manager of PROINVERSIÓN. A lawyer from UNMSM with a master\u0027s degree in Public Management from Universidad del Pacífico, with more than 20 years of experience in regulation, public procurement, and senior government leadership."
-            },
-    "celular":  "+51 943 680 655",
-    "whatsapp":  true,
-    "telefono":  "+51 1 200 1200",
-    "anexo":  "1205",
-    "correo":  "mrazuri@proinversion.gob.pe",
-    "direccion":  {
-                      "calle":  "Calle Manuel Gonzales Olaechea 177",
-                      "distrito":  "San Isidro",
-                      "ciudad":  "Lima",
-                      "cp":  "15047",
-                      "pais":  {
-                                   "es":  "Perú",
-                                   "en":  "Peru"
-                               },
-                      "mapa":  "https://www.google.com/maps/search/?api=1\u0026query=Calle+Manuel+Gonzales+Olaechea+177,+San+Isidro,+Lima"
-                  },
-    "web":  "https://www.investinperu.pe",
-    "foto":  "assets/fotos/mrazuri.jpg",
-    "foto_posicion":  "33% 22%",
-    "url_tarjeta":  "https://www.investinperu.pe/tarjeta/mirtha-razuri/",
-    "url_qr":  "https://www.investinperu.pe/tarjeta/mirtha-razuri/",
-    "enlaces":  [
-                    {
-                        "icono":  "doc",
-                        "titulo":  {
-                                       "es":  "Portafolio de proyectos APP y PA 2026–2028",
-                                       "en":  "PPP \u0026 AP Project Portfolio 2026–2028"
-                                   },
-                        "sub":  {
-                                    "es":  "Publicación digital",
-                                    "en":  "Digital publication"
-                                },
-                        "url":  "https://online.fliphtml5.com/qmskz/safo/"
-                    },
-                    {
-                        "icono":  "globe",
-                        "titulo":  {
-                                       "es":  "Invest in Peru",
-                                       "en":  "Invest in Peru"
-                                   },
-                        "sub":  {
-                                    "es":  "Oportunidades de inversión en el Perú",
-                                    "en":  "Investment opportunities in Peru"
-                                },
-                        "url":  "https://www.investinperu.pe"
-                    },
-                    {
-                        "icono":  "link",
-                        "titulo":  {
-                                       "es":  "PROINVERSIÓN en gob.pe",
-                                       "en":  "PROINVERSIÓN on gob.pe"
-                                   },
-                        "sub":  {
-                                    "es":  "Información institucional",
-                                    "en":  "Institutional information"
-                                },
-                        "url":  "https://www.gob.pe/proinversion"
-                    }
-                ],
-    "redes":  [
-                  {
-                      "red":  "linkedin",
-                      "url":  "https://www.linkedin.com/company/proinversionpe"
-                  },
-                  {
-                      "red":  "x",
-                      "url":  "https://x.com/ProInversionPe"
-                  },
-                  {
-                      "red":  "facebook",
-                      "url":  "https://www.facebook.com/proinversionpe"
-                  },
-                  {
-                      "red":  "instagram",
-                      "url":  "https://www.instagram.com/proInversionperu/"
-                  },
-                  {
-                      "red":  "youtube",
-                      "url":  "https://www.youtube.com/user/ProInversionPe"
-                  },
-                  {
-                      "red":  "tiktok",
-                      "url":  "https://www.tiktok.com/@proinversionperu"
-                  }
-              ]
-}
+  // Orden: Presidencia, Gerencia General y luego el orden del Excel
+  var lista = (window.TARJETAS_DATOS || []).filter(function (t) { return t.estado !== 'desactivada'; });
+  var rango = function (t) { var c = (t.cargo && t.cargo.es) || ''; return /Presidente/i.test(c) ? 0 : /Gerent/i.test(c) ? 1 : 2; };
+  lista = lista.map(function (t, i) { return { t: t, i: i }; }).sort(function (a, b) { return rango(a.t) - rango(b.t) || a.i - b.i; }).map(function (x) { return x.t; });
+
+  // En GitHub Pages el QR apunta a la tarjeta publicada ahí mismo; en otro lugar, a la dirección final de investinperu.pe
+  var base = /\.github\.io$/i.test(location.hostname) ? location.origin + location.pathname.replace(/index\.html$/i, '') : 'https://www.investinperu.pe/tarjeta/';
+  var urlDe = function (t) { return base + t.slug + '/'; };
+
+  function qrSVG(texto) {
+    if (typeof window.qrcode !== 'function') return '';
+    var q = window.qrcode(0, 'H'); q.addData(texto); q.make();
+    var n = q.getModuleCount(), m = 3, tam = n + m * 2, hueco = Math.round(n * .24); if ((n - hueco) % 2) hueco++;
+    var h0 = (n - hueco) / 2, h1 = h0 + hueco, d = '';
+    var bus = function (r, c) { return (r < 7 && c < 7) || (r < 7 && c >= n - 7) || (r >= n - 7 && c < 7); };
+    for (var r = 0; r < n; r++) for (var c = 0; c < n; c++) {
+      if (!q.isDark(r, c) || bus(r, c) || (r >= h0 - .5 && r < h1 && c >= h0 - .5 && c < h1)) continue;
+      d += 'M' + (c + m + .08) + ' ' + (r + m + .08) + 'h.84v.84h-.84z';
+    }
+    var b = function (x, y) { return '<rect x="' + (x + .5) + '" y="' + (y + .5) + '" width="6" height="6" rx="1.7" fill="none" stroke="#161A1D" stroke-width="1"/><rect x="' + (x + 2) + '" y="' + (y + 2) + '" width="3" height="3" rx=".8" fill="#E1261D"/>'; };
+    var cx = m + h0, a = hueco;
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + tam + ' ' + tam + '" aria-hidden="true"><rect width="' + tam + '" height="' + tam + '" fill="#fff"/><path d="' + d + '" fill="#161A1D" shape-rendering="crispEdges"/>' +
+      b(m, m) + b(m + n - 7, m) + b(m, m + n - 7) +
+      '<rect x="' + (cx + .3) + '" y="' + (m + h0 + .3) + '" width="' + (a - .6) + '" height="' + (a - .6) + '" rx="1.2" fill="#fff" stroke="#DADAD8" stroke-width=".25"/>' +
+      '<path d="M' + (cx + a * .55) + ' ' + (m + h0 + a * .2) + 'h' + (a * .28) + 'l' + (-a * .41) + ' ' + (a * .6) + 'h' + (-a * .28) + 'z" fill="#E1261D"/></svg>';
+  }
+
+  function pintar(filtro) {
+    var q = norm(filtro);
+    var vis = lista.filter(function (t) { return !q || norm(t.nombres + ' ' + t.apellidos + ' ' + (t.cargo && t.cargo.es)).indexOf(q) >= 0; });
+    $('#contador').textContent = vis.length === lista.length ? lista.length + ' tarjetas' : vis.length + ' de ' + lista.length + ' tarjetas';
+    $('#rejilla').innerHTML = vis.length ? vis.map(function (t, i) {
+      var nombre = (t.nombres + ' ' + t.apellidos).trim();
+      var ini = ((t.nombres || ' ')[0] + (t.apellidos || ' ')[0]).toUpperCase();
+      return '<article class="ficha" style="animation-delay:' + Math.min(i * 0.04, .6) + 's" data-slug="' + esc(t.slug) + '">' +
+        '<a class="ficha-foto" href="' + esc(t.slug) + '/" aria-label="Abrir la tarjeta de ' + esc(nombre) + '">' +
+          (t.foto ? '<img src="' + esc(t.foto) + '" alt="" loading="lazy" style="object-position:' + esc(t.foto_posicion || '50% 24%') + '">' : '<span class="ini">' + esc(ini) + '</span>') +
+          '<span class="ficha-nombre">' + esc(nombre) + '</span></a>' +
+        '<div class="ficha-cuerpo"><p class="ficha-cargo">' + esc(t.cargo && t.cargo.es) + '</p>' +
+          '<div class="ficha-pie"><button class="qr-mini" type="button" data-qr aria-label="Ampliar el QR de ' + esc(nombre) + '">' + qrSVG(urlDe(t)) + '</button>' +
+          '<div class="botones"><a class="btn btn-rojo" href="' + esc(t.slug) + '/">Ver tarjeta</a><button class="btn btn-gris" type="button" data-qr>Ampliar QR</button></div></div></div>' +
+        '</article>';
+    }).join('') : '<p class="vacio">No hay tarjetas que coincidan con la búsqueda.</p>';
+  }
+
+  var ultimo;
+  function abrirQR(slug) {
+    var t = lista.filter(function (x) { return x.slug === slug; })[0]; if (!t) return;
+    ultimo = document.activeElement;
+    $('#modalNombre').textContent = (t.nombres + ' ' + t.apellidos).trim();
+    $('#modalCargo').textContent = (t.cargo && t.cargo.es) || '';
+    $('#modalQR').innerHTML = qrSVG(urlDe(t));
+    $('#modalAbrir').href = t.slug + '/';
+    $('#modal').hidden = false; $('.modal-cerrar').focus();
+  }
+  function cerrar() { $('#modal').hidden = true; if (ultimo) ultimo.focus(); }
+
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-qr]'); if (b) { abrirQR(b.closest('[data-slug]').getAttribute('data-slug')); return; }
+    if (e.target.closest('[data-cerrar]')) cerrar();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !$('#modal').hidden) cerrar(); });
+  $('#buscar').addEventListener('input', function (e) { pintar(e.target.value); });
+
+  pintar('');
+  // El generador de QR carga aparte; cuando llega, se dibujan los códigos
+  window.directorioQRListo = function () {
+    Array.prototype.forEach.call(document.querySelectorAll('.ficha'), function (f) {
+      var t = lista.filter(function (x) { return x.slug === f.getAttribute('data-slug'); })[0];
+      var b = f.querySelector('.qr-mini'); if (t && b && !b.firstChild) b.innerHTML = qrSVG(urlDe(t));
+    });
+  };
+  if (typeof window.qrcode === 'function') window.directorioQRListo();
+})();
 </script>
-<script src="assets/tarjeta.js"></script>
-<!-- Generador de QR: carga asíncrona; la tarjeta no depende de él para mostrarse. En producción se aloja en el propio servidor. -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" async onload="window.tarjetaQRListo && window.tarjetaQRListo()"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" async onload="window.directorioQRListo && window.directorioQRListo()"></script>
 </body>
 </html>
