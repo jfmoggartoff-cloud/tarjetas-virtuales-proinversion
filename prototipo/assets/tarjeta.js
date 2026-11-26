@@ -16,7 +16,7 @@
   }
   if (previa) {
     try {
-      var est = JSON.parse(localStorage.getItem('proto-admin-v1'));
+      var est = JSON.parse(localStorage.getItem('proto-admin-v2'));
       var tp = est && est.tarjetas.filter(function (x) { return x.slug === previa; })[0];
       if (tp) D = combinar(est.comunes, tp);
     } catch (e) {}

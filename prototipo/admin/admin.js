@@ -5,7 +5,7 @@
   'use strict';
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
-  const CLAVE = 'proto-admin-v1';
+  const CLAVE = 'proto-admin-v2';
   const RAIZ = '../';
   const URL_BASE = 'https://www.investinperu.pe/tarjeta/';
   const DIA = 864e5;
@@ -79,37 +79,17 @@
       { red: 'tiktok', url: 'https://www.tiktok.com/@proinversionperu' }
     ]
   };
-  const ej = (slug, nombres, apellidos, cargoEs, cargoEn, areaEs, areaEn, extra) => Object.assign({
-    slug, nombres, apellidos, correo: slug.replace('-', '.') + '@ejemplo.gob.pe',
-    cargo: { es: cargoEs, en: cargoEn }, area: { es: areaEs, en: areaEn },
-    bio: { es: '', en: '' }, celular: '+51 900 000 0' + String(slug.length).padStart(2, '0'), whatsapp: true, anexo: '',
-    foto: '', foto_posicion: '50% 22%', estado: 'activa', ejemplo: true
-  }, extra || {});
-  const TARJETAS0 = [
-    {
-      slug: 'mirtha-razuri', nombres: 'Mirtha Agustina', apellidos: 'Rázuri Alpiste', correo: 'mrazuri@proinversion.gob.pe',
-      cargo: { es: 'Gerenta General', en: 'General Manager' }, area: { es: 'Gerencia General', en: 'General Management' },
-      bio: {
-        es: 'Gerenta General de PROINVERSIÓN. Abogada por la UNMSM y magíster en Gestión Pública por la Universidad del Pacífico, con más de 20 años de experiencia en regulación, contratación pública y alta dirección en el Estado.',
-        en: "General Manager of PROINVERSIÓN. A lawyer from UNMSM with a master's degree in Public Management from Universidad del Pacífico, with more than 20 years of experience in regulation, public procurement, and senior government leadership."
-      },
-      celular: '+51 943 680 655', whatsapp: true, anexo: '1205',
-      foto: 'assets/fotos/mrazuri.jpg', foto_posicion: '33% 22%', estado: 'activa', codigo: 'R4ZQ7', popularidad: 42
-    },
-    ej('carlos-mendoza', 'Carlos Alberto', 'Mendoza Paredes', 'Director de Proyectos', 'Projects Director', 'Dirección de Proyectos', 'Projects Division', { anexo: '1310', popularidad: 26 }),
-    ej('lucia-castro', 'Lucía Fernanda', 'Castro Ibáñez', 'Directora de Promoción de Inversiones', 'Investment Promotion Director', 'Dirección de Promoción de Inversiones', 'Investment Promotion Division', { popularidad: 31 }),
-    ej('ana-torres', 'Ana Sofía', 'Torres Villanueva', 'Directora de Portafolio de Proyectos', 'Project Portfolio Director', 'Dirección de Portafolio de Proyectos', 'Project Portfolio Division', { popularidad: 18 }),
-    ej('ricardo-huaman', 'Ricardo Manuel', 'Huamán Quispe', 'Director de Inversiones Descentralizadas', 'Decentralized Investment Director', 'Dirección de Inversiones Descentralizadas', 'Decentralized Investment Division', { popularidad: 14 }),
-    ej('jorge-salazar', 'Jorge Luis', 'Salazar Ríos', 'Jefe de Comunicaciones', 'Head of Communications', 'Oficina de Comunicaciones e Imagen Institucional', 'Communications Office', { popularidad: 9 }),
-    ej('miguel-rojas', 'Miguel Ángel', 'Rojas Díaz', 'Especialista en APP', 'PPP Specialist', 'Dirección de Proyectos', 'Projects Division', { celular: '', whatsapp: false, popularidad: 6 }),
-    ej('patricia-leon', 'Patricia Elena', 'León Gamarra', 'Asesora de Gerencia General', 'Advisor to the General Manager', 'Gerencia General', 'General Management', { estado: 'desactivada', desactivadaHace: 24, popularidad: 12 })
-  ].map((t, i) => Object.assign({ codigo: 'X' + (1000 + i * 37).toString(36).toUpperCase(), creada: new Date(HOY - (i === 0 ? 1 : 100 + i * 9) * DIA).toISOString() }, t));
+  /* Tarjetas reales: las genera herramientas/generar-desde-excel.ps1 a partir de plantilla-tarjetas.xlsx
+     (archivo ../assets/datos-tarjetas.js). La «popularidad» solo alimenta las estadísticas simuladas. */
+  const peso = t => { const c = v(t.cargo); return /Presidente/i.test(c) ? 48 : /Gerent/i.test(c) ? 42 : /Direcci[oó]n|Servicios al Inversionista/i.test(c) && /^Director/i.test(c) ? 30 : /Director|Subdirector/i.test(c) ? 20 : 12; };
+  const TARJETAS0 = (window.TARJETAS_DATOS || []).map(t => Object.assign({
+    creada: new Date(HOY - (t.slug === 'mirtha-razuri' ? 7 : 0) * DIA + 9 * 36e5).toISOString()
+  }, t, { popularidad: peso(t) + semilla(t.slug) % 7 }));
   const HISTORIAL0 = [
-    { fecha: new Date(HOY - 1 * DIA + 16.7 * 36e5).toISOString(), tipo: 'crear', slug: 'mirtha-razuri', texto: 'Creó la tarjeta', detalle: 'Mirtha Agustina Rázuri Alpiste' },
-    { fecha: new Date(HOY - 1 * DIA + 17.2 * 36e5).toISOString(), tipo: 'foto', slug: 'mirtha-razuri', texto: 'Actualizó la foto y su encuadre', detalle: 'Mirtha Agustina Rázuri Alpiste' },
-    { fecha: new Date(HOY - 1 * DIA + 17.6 * 36e5).toISOString(), tipo: 'comunes', texto: 'Actualizó los datos comunes', detalle: 'Dirección, redes institucionales (se agregó TikTok)' },
-    { fecha: new Date(HOY - 24 * DIA + 10.1 * 36e5).toISOString(), tipo: 'desactivar', slug: 'patricia-leon', texto: 'Desactivó la tarjeta', detalle: 'Patricia Elena León Gamarra · ejemplo' },
-    { fecha: new Date(HOY - 40 * DIA + 9.5 * 36e5).toISOString(), tipo: 'editar', slug: 'lucia-castro', texto: 'Editó la tarjeta', detalle: 'Lucía Fernanda Castro Ibáñez · cargo (inglés) · ejemplo' }
+    { fecha: new Date(HOY + 10.5 * 36e5).toISOString(), tipo: 'crear', texto: 'Importó tarjetas desde Excel', detalle: (TARJETAS0.length - 1) + ' funcionarios nuevos · plantilla-tarjetas.xlsx' },
+    { fecha: new Date(HOY - 6 * DIA + 17.6 * 36e5).toISOString(), tipo: 'comunes', texto: 'Actualizó los datos comunes', detalle: 'Dirección, redes institucionales (se agregó TikTok)' },
+    { fecha: new Date(HOY - 7 * DIA + 17.2 * 36e5).toISOString(), tipo: 'foto', slug: 'mirtha-razuri', texto: 'Actualizó la foto y su encuadre', detalle: 'Mirtha Agustina Rázuri Alpiste' },
+    { fecha: new Date(HOY - 7 * DIA + 16.7 * 36e5).toISOString(), tipo: 'crear', slug: 'mirtha-razuri', texto: 'Creó la tarjeta', detalle: 'Mirtha Agustina Rázuri Alpiste' }
   ];
 
   let E;

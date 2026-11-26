@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mirtha Agustina R&#225;zuri Alpiste · PROINVERSIÓN</title>
+<meta name="description" content="Tarjeta de contacto de Mirtha Agustina R&#225;zuri Alpiste, Gerenta General de PROINVERSI&#211;N.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1B1E21">
+<!-- En producción el servidor completa estas etiquetas e imagen para la vista previa en WhatsApp/LinkedIn -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Mirtha Agustina R&#225;zuri Alpiste &#183; PROINVERSI&#211;N">
+<meta property="og:description" content="Gerenta General">
+<meta property="og:url" content="https://www.investinperu.pe/tarjeta/mirtha-razuri/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpolygon points='15,4 29,4 17,28 3,28' fill='%23E1261D'/%3E%3C/svg%3E">
+<link rel="preload" href="../assets/fonts/UniviaPro-Bold.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../assets/fonts/UniviaPro-Medium.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="../assets/tarjeta.css">
+</head>
+<body class="cargando">
+
+<main class="tarjeta" id="tarjeta">
+  <div class="col-izq">
+    <header class="hero" id="hero">
+      <div class="hero-foto" id="heroFoto">
+        <div class="hero-iniciales" id="iniciales" aria-hidden="true"></div>
+        <img id="foto" alt="" hidden>
+      </div>
+      <div class="hero-velo"></div>
+      <svg class="hero-accent hero-accent--linea" viewBox="0 0 160 146.7" aria-hidden="true"><polygon points="100,0 160,0 60,146.7 0,146.7"/></svg>
+      <svg class="hero-accent" viewBox="0 0 160 146.7" aria-hidden="true"><polygon points="100,0 160,0 60,146.7 0,146.7"/></svg>
+      <div class="hero-top">
+        <img class="logo" src="../assets/img/logo-proinversion-blanco-acento-rojo.svg" alt="PROINVERSIÓN" width="150" height="48">
+        <div class="idioma" role="group" aria-label="Idioma / Language">
+          <button type="button" data-lang="es" aria-pressed="true">ES</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+      <div class="hero-texto">
+        <h1 class="nombre" id="nombre"></h1>
+        <p class="cargo" id="cargo"></p>
+        <p class="area" id="area"></p>
+      </div>
+    </header>
+
+    <nav class="acciones" id="acciones" aria-label="Acciones rápidas"></nav>
+
+    <div class="barra" id="barra">
+      <button type="button" class="btn-ico" id="btnQR"><span class="sr" data-t="qr"></span></button>
+      <button type="button" class="btn-ico" id="btnCompartir"><span class="sr" data-t="compartir"></span></button>
+      <button type="button" class="btn-principal" id="btnGuardar"><span data-t="guardar"></span></button>
+    </div>
+  </div>
+
+  <div class="col-der">
+    <section class="inactiva-aviso" id="avisoInactiva" role="status" hidden></section>
+
+    <section class="panel-qr revelar" id="panelQR" aria-labelledby="panelQRTitulo">
+      <div class="panel-qr-codigo" id="panelQRCodigo"></div>
+      <div>
+        <h2 id="panelQRTitulo" data-t="escritorioTitulo"></h2>
+        <p data-t="escritorioSub"></p>
+      </div>
+    </section>
+
+    <section class="bloque revelar" id="secPerfil" aria-labelledby="tPerfil">
+      <h2 class="titulo" id="tPerfil"><span data-t="perfil"></span></h2>
+      <p class="bio" id="bio"></p>
+    </section>
+
+    <section class="bloque revelar" id="secContacto" aria-labelledby="tContacto">
+      <h2 class="titulo" id="tContacto"><span data-t="contacto"></span></h2>
+      <ul class="filas" id="filas"></ul>
+    </section>
+
+    <section class="bloque revelar" id="secEnlaces" aria-labelledby="tEnlaces">
+      <h2 class="titulo" id="tEnlaces"><span data-t="enlaces"></span></h2>
+      <div class="enlaces" id="enlaces"></div>
+    </section>
+
+    <section class="bloque revelar" id="secRedes" aria-labelledby="tRedes">
+      <h2 class="titulo" id="tRedes"><span data-t="redes"></span></h2>
+      <div class="redes" id="redes"></div>
+    </section>
+
+    <footer class="pie revelar">
+      <div class="pie-logos">
+        <img src="../assets/img/logo-mef.png" alt="Ministerio de Economía y Finanzas" width="800" height="157" class="pie-mef">
+        <span class="pie-sep" aria-hidden="true"></span>
+        <img src="../assets/img/logo-proinversion.svg" alt="PROINVERSIÓN" width="150" height="48" class="pie-pro">
+      </div>
+      <p class="pie-entidad" id="entidad"></p>
+    </footer>
+  </div>
+</main>
+
+<div class="hoja" id="hojaQR" role="dialog" aria-modal="true" aria-labelledby="hojaTitulo" hidden>
+  <div class="hoja-fondo" data-cerrar></div>
+  <div class="hoja-panel" tabindex="-1">
+    <span class="hoja-asa" aria-hidden="true"></span>
+    <button type="button" class="hoja-cerrar" data-cerrar><span class="sr" data-t="cerrar"></span></button>
+    <h2 id="hojaTitulo" data-t="qrTitulo"></h2>
+    <p class="hoja-sub" data-t="qrSub"></p>
+    <div class="qr-marco"><div id="qrGrande"></div></div>
+    <p class="hoja-nombre" id="hojaNombre"></p>
+    <p class="hoja-cargo" id="hojaCargo"></p>
+    <div class="hoja-botones">
+      <button type="button" class="btn-sec" id="btnDescargarQR"><span data-t="descargarQR"></span></button>
+      <button type="button" class="btn-sec" id="btnCopiar"><span data-t="copiar"></span></button>
+    </div>
+  </div>
+</div>
+
+<div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
+<!-- En producción el servidor (PHP) imprime aquí los datos de la tarjeta desde la base de datos -->
+<script id="datos-tarjeta" type="application/json">
+{
+    "slug":  "mirtha-razuri",
+    "nombres":  "Mirtha Agustina",
+    "apellidos":  "Rázuri Alpiste",
+    "cargo":  {
+                  "es":  "Gerenta General",
+                  "en":  "General Manager"
+              },
+    "area":  {
+                 "es":  "Gerencia General",
+                 "en":  "General Management"
+             },
+    "entidad":  {
+                    "es":  "Agencia de Promoción de la Inversión Privada – PROINVERSIÓN",
+                    "en":  "Private Investment Promotion Agency – PROINVERSIÓN"
+                },
+    "bio":  {
+                "es":  "Gerenta General de PROINVERSIÓN. Abogada por la UNMSM y magíster en Gestión Pública por la Universidad del Pacífico, con más de 20 años de experiencia en regulación, contratación pública y alta dirección en el Estado.",
+                "en":  "General Manager of PROINVERSIÓN. A lawyer from UNMSM with a master\u0027s degree in Public Management from Universidad del Pacífico, with more than 20 years of experience in regulation, public procurement, and senior government leadership."
+            },
+    "celular":  "+51 943 680 655",
+    "whatsapp":  true,
+    "telefono":  "+51 1 200 1200",
+    "anexo":  "1205",
+    "correo":  "mrazuri@proinversion.gob.pe",
+    "direccion":  {
+                      "calle":  "Calle Manuel Gonzales Olaechea 177",
+                      "distrito":  "San Isidro",
+                      "ciudad":  "Lima",
+                      "cp":  "15047",
+                      "pais":  {
+                                   "es":  "Perú",
+                                   "en":  "Peru"
+                               },
+                      "mapa":  "https://www.google.com/maps/search/?api=1\u0026query=Calle+Manuel+Gonzales+Olaechea+177,+San+Isidro,+Lima"
+                  },
+    "web":  "https://www.investinperu.pe",
+    "foto":  "../assets/fotos/mrazuri.jpg",
+    "foto_posicion":  "33% 22%",
+    "url_tarjeta":  "https://www.investinperu.pe/tarjeta/mirtha-razuri/",
+    "url_qr":  "https://www.investinperu.pe/tarjeta/mirtha-razuri/",
+    "enlaces":  [
+                    {
+                        "icono":  "doc",
+                        "titulo":  {
+                                       "es":  "Portafolio de proyectos APP y PA 2026–2028",
+                                       "en":  "PPP \u0026 AP Project Portfolio 2026–2028"
+                                   },
+                        "sub":  {
+                                    "es":  "Publicación digital",
+                                    "en":  "Digital publication"
+                                },
+                        "url":  "https://online.fliphtml5.com/qmskz/safo/"
+                    },
+                    {
+                        "icono":  "globe",
+                        "titulo":  {
+                                       "es":  "Invest in Peru",
+                                       "en":  "Invest in Peru"
+                                   },
+                        "sub":  {
+                                    "es":  "Oportunidades de inversión en el Perú",
+                                    "en":  "Investment opportunities in Peru"
+                                },
+                        "url":  "https://www.investinperu.pe"
+                    },
+                    {
+                        "icono":  "link",
+                        "titulo":  {
+                                       "es":  "PROINVERSIÓN en gob.pe",
+                                       "en":  "PROINVERSIÓN on gob.pe"
+                                   },
+                        "sub":  {
+                                    "es":  "Información institucional",
+                                    "en":  "Institutional information"
+                                },
+                        "url":  "https://www.gob.pe/proinversion"
+                    }
+                ],
+    "redes":  [
+                  {
+                      "red":  "linkedin",
+                      "url":  "https://www.linkedin.com/company/proinversionpe"
+                  },
+                  {
+                      "red":  "x",
+                      "url":  "https://x.com/ProInversionPe"
+                  },
+                  {
+                      "red":  "facebook",
+                      "url":  "https://www.facebook.com/proinversionpe"
+                  },
+                  {
+                      "red":  "instagram",
+                      "url":  "https://www.instagram.com/proInversionperu/"
+                  },
+                  {
+                      "red":  "youtube",
+                      "url":  "https://www.youtube.com/user/ProInversionPe"
+                  },
+                  {
+                      "red":  "tiktok",
+                      "url":  "https://www.tiktok.com/@proinversionperu"
+                  }
+              ]
+}
+</script>
+<script src="../assets/tarjeta.js"></script>
+<!-- Generador de QR: carga asíncrona; la tarjeta no depende de él para mostrarse. En producción se aloja en el propio servidor. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" async onload="window.tarjetaQRListo && window.tarjetaQRListo()"></script>
+</body>
+</html>

@@ -23,8 +23,8 @@ Aplicación para crear **tarjetas de contacto virtuales** de los funcionarios de
 
 | Pieza | Estado |
 |---|---|
-| Tarjeta pública | Prototipo terminado con datos reales (Mirtha Rázuri, Gerenta General) |
-| Panel de administración | Prototipo navegable. **Datos en el navegador y estadísticas simuladas** |
+| Tarjeta pública | Prototipo terminado, con 20 funcionarios reales generados desde el Excel |
+| Panel de administración | Prototipo navegable con las 20 tarjetas. **Los cambios se guardan en el navegador y las estadísticas son simuladas** |
 | Publicación de prueba | `publicar/LEEME-TI.txt`: versión estática de la tarjeta para `investinperu.pe/tarjeta/mirtha-razuri/` (el ZIP se regenera) |
 | Sistema real (fase 1) | Pendiente: backend PHP 8.1 + MySQL en el servidor de investinperu.pe (Apache/AlmaLinux) |
 | Carga masiva desde Excel (fase 2) | Diseñada en el panel; falta la lectura real del Excel |
@@ -34,8 +34,9 @@ Aplicación para crear **tarjetas de contacto virtuales** de los funcionarios de
 ```
 index.html                     Portada de la demostración (enlaces a la tarjeta y al panel)
 prototipo/                     Lo que se ve en el navegador
-├── index.html                 Tarjeta pública (los datos van en un bloque JSON)
-├── assets/                    tarjeta.css, tarjeta.js, fuentes Univia Pro, logos, fotos optimizadas
+├── index.html                 Tarjeta de la Gerenta General (enlace usado en la demostración)
+├── <nombre-apellido>/         Una tarjeta pública por funcionario (20), igual que investinperu.pe/tarjeta/<…>/
+├── assets/                    tarjeta.css, tarjeta.js, datos-tarjetas.js, fuentes Univia Pro, logos, fotos optimizadas
 └── admin/                     Panel de administración (index.html, admin.css, admin.js)
 
 plantilla-tarjetas.xlsx        Plantilla de carga: hojas Tarjetas, Instrucciones y Datos comunes
@@ -45,7 +46,17 @@ referencias/                   Marca: marca-oficial.md (resumen del manual), log
 publicar/LEEME-TI.txt          Instrucciones para que TI publique la versión estática
 capturas/                      Capturas de la tarjeta y del panel
 herramientas/servidor.ps1      Servidor local de pruebas (PowerShell, sin instalar nada)
+herramientas/generar-desde-excel.ps1   Crea o actualiza las tarjetas a partir del Excel y de fotos/
 ```
+
+## Actualizar las tarjetas desde el Excel
+
+1. Edita `plantilla-tarjetas.xlsx` (hoja **Tarjetas**) y coloca las fotos en `fotos/`, con el nombre del usuario del correo (`yrosas@…` → `yrosas.jpg`).
+2. Ejecuta:
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File herramientas\generar-desde-excel.ps1
+   ```
+3. Se regeneran las páginas `prototipo/<nombre-apellido>/`, las fotos optimizadas y los datos del panel. En el panel, usa «Restablecer datos de prueba» para ver los cambios si ya lo habías abierto en ese navegador.
 
 ## Verlo en la computadora
 
